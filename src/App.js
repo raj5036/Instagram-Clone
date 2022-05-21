@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
+import AppStyles from './AppStyles';
+import { ThemeProvider } from '@material-ui/core';
+import LightStylesConfig from './lib/StyleConfigs/ColorsConfig/LightStylesConfig'
+import DarkStylesConfig from './lib/StyleConfigs/ColorsConfig/DarkStylesConfig'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      isDarkMode: false
+    }
+  }
+
+  render () {
+    const { classes } = this.props
+    const { isDarkMode } = this.state
+    console.log(classes)
+    return (
+      <ThemeProvider theme={isDarkMode ? DarkStylesConfig : LightStylesConfig}>
+        {LightStylesConfig.palette.background.level2}
+        <div className={classes.root}>Hi</div>
+      </ThemeProvider>
+    )
+  }
 }
 
-export default App;
+export default withStyles(AppStyles)(App);
