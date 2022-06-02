@@ -1,8 +1,8 @@
 import CommonColorsConfig from './CommonColorsConfig';
 import CommonStylesConfig from '../CommonStylesConfig';
-import { createTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
-let LightStylesConfig = createTheme({
+let LightStylesConfig = createMuiTheme({
   palette: {
     ...CommonColorsConfig,
     type: 'light',
